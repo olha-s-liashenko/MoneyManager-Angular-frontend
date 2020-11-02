@@ -1,0 +1,22 @@
+<h2>Incomes</h2>
+<div style="width: 100px; height: 100px;">
+    <button mat-fab color="primary" class="md-fab-bottom-right" aria-label="Add a new Income" (click)=openDialog()>
+      <mat-icon>add</mat-icon>
+    </button>
+</div>
+<div class="content" fxLayout="row wrap"  fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let income of incomes">
+        <mat-card  class="income-card">
+            <mat-card-header class="income-card-header">
+                <mat-card-title >{{ income.source }}</mat-card-title>
+                <mat-card-subtitle>
+                    <p>{{ income.amount | currency }}</p>
+                    <p>{{ income.date | date }}</p>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+                <button mat-button>REMOVE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
