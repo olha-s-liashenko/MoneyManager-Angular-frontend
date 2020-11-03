@@ -41,19 +41,21 @@ export class IncomesComponent implements OnInit {
     );
   }
 
-  onSubmit(incomeData: Income) {
-    this.createNewIncome(incomeData);
-  }
-
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
 
-    const dialog = this.dialog.open(IncomeDialogComponent, dialogConfig);
+    const dialog = this.dialog.open(IncomeDialogComponent, {
+      autoFocus: true,
+      data: {amount: null, source: null, date: null}
+    });
 
     dialog.afterClosed().subscribe(income => {
       console.log("result:");
       console.log(income);
+      if (income && income.amount > 0.0 && income.source && income.date) {
+        this.createNewIncome(income);
+      }
     });
   }
 
