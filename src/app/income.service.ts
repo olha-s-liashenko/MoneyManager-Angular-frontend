@@ -9,7 +9,7 @@ import { Income } from './income';
 })
 export class IncomeService {
 
-  URL = 'http://localhost:8080';
+  URL = 'http://localhost:8080/incomes';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -19,22 +19,25 @@ export class IncomeService {
   ) { }
 
   createIncome(income: Income): Observable<Income> {
-    return this.http.post<Income>(this.URL + "/incomes", income, this.httpOptions)
+    return this.http.post<Income>(this.URL, income, this.httpOptions)
       .pipe(
         catchError(this.handleError<Income>('createIncome'))
       );
   }
 
   getAllIncomes(): Observable<Income[]> {
-    console.log("Service.getAllIncomes");
-    return this.http.get<Income[]>(this.URL + '/incomes')
+    return this.http.get<Income[]>(this.URL)
       .pipe(
         catchError(this.handleError<Income[]>('getAllIncomes', []))
       );
   }
 
-  getIncomeDetails(id) {
-    // TODO: return income by id
+  deleteIncome(id: number): Observable<{}> {
+    const url = `${this.URL}/${id}`;
+    return this.http.delete(url, this.httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteIncome'))
+      );
   }
 
   private handleError<T>(operation='operation', result?: T) {

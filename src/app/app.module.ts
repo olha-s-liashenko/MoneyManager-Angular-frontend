@@ -16,13 +16,16 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import {MatDialogModule} from '@angular/material/dialog';
 import { IncomeDialogComponent } from './income-dialog/income-dialog.component';
 import { FormsModule } from '@angular/forms';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     IncomesComponent,
-    IncomeDialogComponent
+    IncomeDialogComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,9 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     FlexLayoutModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatListModule,
   ],
   providers: [
     // {

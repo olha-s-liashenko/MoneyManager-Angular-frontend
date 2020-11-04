@@ -41,6 +41,11 @@ export class IncomesComponent implements OnInit {
     );
   }
 
+  deleteIncome(id: number, i: number) {
+    this.incomeService.deleteIncome(id).subscribe();
+    this.incomes.splice(i, 1);
+  }
+
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
