@@ -19,13 +19,17 @@ import { FormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatListModule} from '@angular/material/list';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { ExpenseDialogComponent } from './expense-dialog/expense-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IncomesComponent,
     IncomeDialogComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ExpensesComponent,
+    ExpenseDialogComponent
   ],
   imports: [
     BrowserModule,
